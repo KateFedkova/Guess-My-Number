@@ -40,18 +40,23 @@ document.querySelector('.again').addEventListener('click', function () {
 
   setBackgroundColor('#222');
   setWidth('15rem');
+  document.querySelector('.check').disabled = false;
 });
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   if (!guess) {
     displayMessage('No number');
+  } else if (guess < 1 || guess > 20) {
+    displayMessage('Invalid input');
   } else if (guess === secretNumber) {
     displayMessage('🎉 Correct answer');
     setNumber(secretNumber);
 
     setBackgroundColor('#60b347');
     setWidth('30rem');
+    document.querySelector('.check').disabled = true;
+    document.querySelector('.popup').style.display = 'block';
 
     if (score > highscore) {
       highscore = score;
@@ -64,7 +69,7 @@ document.querySelector('.check').addEventListener('click', function () {
       setScore(score);
     } else {
       score--;
-      displayMessage('💥 You lost the game ');
+      displayMessage('💥 You lost the game');
       setScore(score);
     }
   }
