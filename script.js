@@ -41,6 +41,7 @@ document.querySelector('.again').addEventListener('click', function () {
   setBackgroundColor('#222');
   setWidth('15rem');
   document.querySelector('.check').disabled = false;
+  document.querySelector('.popup').style.display = 'none';
 });
 
 document.querySelector('.check').addEventListener('click', function () {
